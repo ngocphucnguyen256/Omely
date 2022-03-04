@@ -1,0 +1,120 @@
+.policy{
+    margin-top: 0px;
+    h2{
+      color: theme-color(primary);
+      font-size: 25px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    h3{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    p{
+      text-align: justify;
+      line-height: 1.5;
+      &.note{
+        font-size: 14px;
+        font-style: italic;
+      }
+    }
+    li{
+      margin-top: 10px;
+      line-height: 1.5;
+      p{
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+    ol > li{
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 15px;
+      ul{
+        padding-left: 10px;
+        li{
+          font-weight: 400;
+          line-height: 1.5;
+          margin-top: 10px;
+          ol{
+            li{
+              font-size: 16px;
+              font-weight: 600;
+              ul{
+                li{
+                  font-weight: 400;
+                  ul{
+                    padding-left: 20px;
+                    list-style-type: disc;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    table{
+      width: 100%;
+      margin-bottom: 20px;
+      tr{
+        td,th{
+          border: 1px solid theme-color-light(primary);
+          padding-left: 10px;
+        }
+        th{
+          background: theme-color(primary);
+          color: #000;
+          text-align: center;
+        }
+      }
+      &.guarantee{
+        td,th{
+          text-align: center;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        td:nth-child(1), th:nth-child(1){
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .lp-price-list{
+    table{
+      tbody{
+        tr{
+          td{
+            text-align: center;
+          }
+          td:nth-child(1), th:nth-child(1){
+            font-weight: 500;
+          }
+        }
+        tr:nth-child(1){
+          font-weight: 500;
+          td{
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    td,th{
+      font-size: 16px;
+    }
+    @include media-breakpoint-down(sm) {
+      h2.title{
+        font-size: 18px;
+      }
+      td,th{
+        font-size: 10px;
+      }
+      p{
+        font-size: 14px;
+      }
+    }
+  }

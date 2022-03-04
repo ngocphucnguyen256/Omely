@@ -1,0 +1,229 @@
+.tag-pagenews {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  .tab-container {
+    position: relative;
+
+    .slick-slide{
+      > div{
+        margin-right: 20px;
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 25px;
+      padding: 0;
+
+      li{
+        border: 1px solid #CCC;
+        border-radius: 3px;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        list-style: none;
+        margin-right: 20px;
+        margin-left: 20px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 120px;
+        
+
+        &:hover{
+          border: 1px solid theme-color(primary);
+          a{
+            color: theme-color(primary);
+            text-decoration: none;
+          }
+        }
+        &.active {
+          border: 1px solid theme-color(primary);
+          a {
+            color: theme-color(primary);
+            text-decoration: none;
+          }
+        }
+      }
+      
+    }
+
+    .next, .prev {
+      position: absolute;
+      top: 12px;
+      cursor: pointer;
+    }
+    .next {
+      right: -25px;
+    }
+    .prev {
+      left: -25px;
+    }
+  }
+  
+}
+
+.article-tag {
+  background: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+  z-index: 100;
+
+  .tab-container ul  li{
+    border: none;
+
+    &:hover{
+      border: none;
+    }
+
+    &.active {
+      background: theme-color(primary);
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#floatbar {
+  .fixed {
+    @include depth(1);
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    background:white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.genesys-content-blog {
+  padding-top: 67px;
+  padding-bottom: 30px;
+  
+  &.gene-blog-article{
+    h1,h2,h3,h4,h5,p,span,a,ul,li,ol,table,tr,td,th{
+      font-weight: 400;
+    }
+    h1,h2,h3,h4,h5,h6{
+      margin-top: 36px;
+      margin-bottom: 16px;
+    }
+    a{
+      color:#03a9f4;
+    }
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+
+  .author {
+    color: #ccc;
+    margin-top: 20px;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  p {
+    text-align: justify;
+  }
+
+  .nav-tabs {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: -webkit-box;
+    display: -moz-box;
+  }
+  .nav-tabs {
+    li {
+      float: none;
+    }
+  }
+}
+
+.gene-blog{
+  background: #151515;
+  margin-top: 0;
+  span,a{
+    color: white;
+  }
+}
+
+.tag-art{
+  a{
+    display: block;
+    padding: 10px 40px;
+  }
+  .active{
+    border: 1px solid #ccc;
+  }
+}
+
+.gold-summary{
+  padding-top: 30px;
+  // background: #151515;
+  h1,h2,p{
+    // color: white;
+  }
+  h1{
+    font-size: 28px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  h2{
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align:center;
+  }
+  p{
+    text-align: center;
+    &.note{
+      font-size: 15px;
+      font-weight: 300;
+      line-height:1.5;
+      margin-top: 20px;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+  }
+}
+
+.gene-page-article{
+  // background: #151515;
+  margin-top: 0;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  h3{
+    // color:white;
+  }
+}
+
+.gene-relate{
+  background: #151515;
+  margin-top: 0;
+  padding-top: 80px;
+  padding-bottom: 15px;
+}
+
+.image-container{
+  span{
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+  }
+}

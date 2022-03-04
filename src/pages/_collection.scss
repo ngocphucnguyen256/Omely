@@ -1,0 +1,33 @@
+.collection {
+  margin-top: 50px;
+  
+	article {
+    margin-bottom: 70px;
+
+    .thumbnail {
+      margin-bottom: 1rem;
+    }
+
+    .action{
+      padding: 25px 0;
+      text-align: left;
+    }
+    
+    &:nth-child(even){
+      @include media-breakpoint-up(md) {
+        text-align: right;
+
+        .col-md-5 {
+          order: 1;
+        }
+        .col-md-7 {
+          order: -1;
+        }
+        
+        .action {
+          text-align: right;
+        }
+      }
+    }
+	}
+}

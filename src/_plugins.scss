@@ -1,0 +1,47 @@
+// Select2
+@import "~select2/src/scss/core";
+@import "../ext/select2/material";
+
+// Slick Gallery
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
+/*
+// DateTimePicker
+@import "../ext/datetimepicker/bootstrap-material";
+
+// QsvUploadr
+@import "../ext/uploadr/css/jquery.fancybox";
+@import "../ext/uploadr/css/index";
+
+// ColorPicker
+@import "../ext/colorpicker/jquery.colorpicker";
+
+// Justified Gallery
+@import "~justifiedGallery/dist/css/justifiedGallery";
+
+// OnoffCanvas
+@import "~onoffcanvas/scss/onoffcanvas";
+
+.onoffcanvas {
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  transform: none;
+  transition: all $transitionTime $transitionFunction, visibility 0s 1s linear,
+    max-height 0s 1s linear;
+
+  &.is-open {
+    opacity: 1;
+    max-height: 9000px;
+    visibility: visible;
+    transform: none;
+    transition: all $transitionTime $transitionFunction, visibility 0s 0s linear,
+      max-height 0s 0s linear;
+  }
+
+  &-drawer.is-open {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+*/

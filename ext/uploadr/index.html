@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QsvUploadr 2.1 - QsvProgram (08/05/2018)</title>
+  <link href="/dist/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h1 align="center">QsvUploadr 2.1
+    <button id="adduplr" type="button" class="btn btn-primary">Thêm Uploadr</button>
+  </h1>
+
+  <div class="qsvupldr">
+    <div id="qsvuploadr1" class="uploadr" data-name="file" multiple>
+      <div class="control">
+        <a id="qsvpickr1" href="#picker" class="btn btn-secondary pickr" title="Giữ ctrl để chọn nhiều hình upload"><i class="fas fa-upload"></i> Upload hình</a>
+        <span class="status">Trình duyệt không hỗ trợ HTML5, Flash hoặc Silverlight!</span>
+      </div>
+      <ul class="preview">
+        <li>
+          <div id="image01" class="item">
+            <a href="http://zero.qsvprogram.qsv/data/space-planets.jpg" onclick="return QsvUploadr.OpenImage('http://zero.qsvprogram.qsv/data/space-planets.jpg')"><img src="http://zero.qsvprogram.qsv/data/space-planets.jpg"></a>
+            <div class="removei" onclick="QsvUploadr.RemoveImage(this)"><i class="fas fa-times"></i></div>
+            <div class="handler"><i class="fas fa-arrows-alt"></i></div>
+            <input name="file[]" value="http://zero.qsvprogram.qsv/data/space-stars.jpg" type="hidden">
+          </div>
+        </li>
+        <li>
+          <div id="image02" class="item">
+            <a href="http://zero.qsvprogram.qsv/data/space-stars.jpg" onclick="return QsvUploadr.OpenImage('http://zero.qsvprogram.qsv/data/space-stars.jpg')"><img src="http://zero.qsvprogram.qsv/data/space-stars.jpg"></a>
+            <div class="removei" onclick="QsvUploadr.RemoveImage(this)"><i class="fas fa-times"></i></div>
+            <div class="handler"><i class="fas fa-arrows-alt"></i></div>
+            <input name="file[]" value="http://zero.qsvprogram.qsv/data/space-stars.jpg" type="hidden">
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="qsvuploadr2" class="uploadr" data-name="file">
+      <div class="control">
+        <a id="qsvpickr2" href="#picker" class="btn btn-secondary pickr" title="Chọn một hình upload"><i class="fas fa-upload"></i> Upload thiết kế</a>
+        <span class="status">Trình duyệt không hỗ trợ HTML5, Flash hoặc Silverlight!</span>
+      </div>
+      <ul class="preview">
+        <li>
+          <div id="image03" class="item">
+            <a href="http://zero.qsvprogram.qsv/data/space-wallpaper.jpg" onclick="return QsvUploadr.OpenImage('http://zero.qsvprogram.qsv/data/space-wallpaper.jpg')"><img src="http://zero.qsvprogram.qsv/data/space-wallpaper.jpg"></a>
+            <div class="removei" onclick="QsvUploadr.RemoveImage(this)"><i class="fas fa-times"></i></div>
+            <div class="handler"><i class="fas fa-arrows-alt"></i></div>
+            <input name="file[]" value="http://zero.qsvprogram.qsv/data/space-wallpaper.jpg" type="hidden">
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery --> 
+<script src="//code.jquery.com/jquery-3.3.1.js"></script> 
+<script>window.jQuery || document.write('<script src="./js/jquery.min.js"><\/script>')</script> 
+
+<!-- Scripts -->
+<script type="module">
+  import './js/js.cookie.js';
+  import './js/plupload.full.min.js';
+  import './js/jquery.fancybox.pack.js';
+  import './js/Sortable.js';
+  import './js/index.js';
+  import '../config.js';
+
+  $(()=>{
+    var $qsvupldr = $('.qsvupldr');
+    $qsvupldr.find('>.uploadr').each(function(){
+      QsvUploadr.Build(this,'../../');
+    });
+
+    $('#adduplr').click(function () {
+      QsvUploadr.Add($qsvupldr,'../../');
+      return false;
+    });
+  });
+</script>
+</body>
+</html>

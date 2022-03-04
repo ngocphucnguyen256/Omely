@@ -1,0 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Judson&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+// $font-family-sans-serif: "Roboto", sans-serif;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+// $font-family-secondary: 'Playfair Display', serif;
+$font-family-secondary:'Open Sans Condensed', sans-serif;
+// $font-family-sans-change: 'Judson', sans-serif;
+$font-family-sans-change:'Open Sans Condensed', sans-serif;
+$primary: (
+  color: #f47621,
+  dark: darken(#f47621, 10%),
+  light: lighten(#f47621, 20%),
+);
+$secondary: (
+  color: #000,
+  dark: darken(#000, 10%),
+  light: lighten(#000, 10%),
+);
+
+$third-color: #f47621;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop modify
+  lg: 1024px,
+  // Extra large screen / wide desktop modify
+  xl: 1440px
+);
+
+// Material Design for Bootstrap 4
+$card-border-radius: 6px;
+@import "~daemonite-material/assets/scss/material";

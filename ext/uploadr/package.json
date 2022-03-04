@@ -1,0 +1,17 @@
+{
+  "name": "qsvuploadr",
+  "version": "2.1",
+  "description": "QsvUploadr 2.1",
+  "main": "js/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "QsvProgram",
+  "license": "ISC",
+  "dependencies": {
+    "fancybox": "^3.0.1",
+    "jquery": "^3.2.1",
+    "plupload": "^2.3.6",
+    "sortablejs": "^1.7.0"
+  },
+  "devDependencies": {}
+}

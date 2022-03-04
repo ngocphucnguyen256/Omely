@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tiny Uploadr - QsvProgram (06/05/2018)</title>
+<meta name="author" content="QsvProgram">
+<style>
+html, body {
+  background: #fff;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+#tinypickr {
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 280px;
+}
+#tinybtn {
+  display: inline-block;
+  background-color: #999;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 1rem;
+  margin: 0 10px 10px 0;
+  padding: 5px 10px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+#tinybtn:hover {
+  background-color: #888;
+}
+.status {
+  color: #ccc;
+}
+.preview img {
+  width: auto;
+  max-width: 100%;
+  height: 100px;
+}
+</style>
+</head>
+<body>
+<div id="tinypickr">
+  <a id="tinybtn" href="#pick">Chọn hình upload</a>
+  <div class="status">No runtime found.</div>
+  <div class="preview"></div>
+</div>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/js.cookie.js"></script>
+<script src="./js/plupload.full.min.js"></script>
+<!--script src="./js/moxie.js"></script>
+<script src="./js/plupload.dev.js"></script-->
+<script src="../config.js"></script>
+
+<script>
+$(function(){
+  var $upload = $('#tinypickr'),
+			$pick = $upload.find('a'),
+			$status = $upload.find('.status'),
+			$preview = $upload.find('.preview');
+	
+	var uploadr = new plupload.Uploader({
+    runtimes: 'html5,flash,silverlight,html4',
+    browse_button: $pick.attr('id'),
+    container: $upload.attr('id'),
+    url: Cookies.get('uploadr')+'/upload.php',
+    flash_swf_url: './js/Moxie.swf',
+    silverlight_xap_url: './js/Moxie.xap',
+    chunk_size: '1mb',
+    unique_names: false,
+    multi_selection: false,
+    
+    filters: {
+      max_file_size: '32mb',
+      mime_types: [
+        {title: 'Image files', extensions: 'jpg,jpeg,png,gif,svg,psd,ai,cdr,swf'},
+        {title: 'Doc files', extensions: 'pdf,doc,docx,xls,xlsx,ppt,pptx,txt'},
+        {title: 'Zip files', extensions: 'zip,rar,gz,tar'}
+      ]
+    },
+    
+    init: {
+      PostInit: function() {
+        $status.html('');
+      },
+      
+      FilesAdded: function(up, files) {
+        $.each(files, function(i, file) {
+          $preview.attr('id', file.id);
+          $preview.html('Uploading '+file.name+' <b>0%</b>');
+        });
+      },
+      
+      QueueChanged: function(up) {
+        up.start();
+      },
+      
+      UploadProgress: function(up, file) {
+        $('#'+file.id+' b').html(file.percent+'%');
+      },
+      
+      FileUploaded: function(up, file, info) {
+        var res = $.parseJSON(info.response);
+        $preview.html('<img src="'+res.thumb+'">');
+
+        // Send file data to TinyMCE
+        if(parent.tinymce) {
+          var win = parent.tinymce.activeEditor.windowManager;
+          win.getParams().oninsert(res.location, file.name);
+          win.close();
+        }
+      },
+      
+      Error: function(up, err) {
+        var msg = 'Error #'+err.code+': '+err.message
+        if(err.file) $('#'+err.file.id).html(msg);
+        else $status.html(msg);
+      }
+    }
+	});
+	
+  uploadr.init();
+});
+</script>
+</body>
+</html>

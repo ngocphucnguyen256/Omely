@@ -1,0 +1,125 @@
+.qsvupldr {
+  position: relative;
+  margin-bottom: -30px;
+}
+.qsvupldr .uploadr {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.qsvupldr .uploadr .control {
+  
+}
+.qsvupldr .uploadr .status {
+	font-style: italic;
+	line-height: 30px;
+	text-align: center;
+}
+.qsvupldr .uploadr .pickr {
+  padding: 7px 10px;
+  text-transform: none;
+}
+.qsvupldr .uploadr .pickr a,
+.qsvupldr .uploadr .pickr a:hover,
+.qsvupldr .uploadr .pickr a:focus {
+	outline: none;
+}
+
+.qsvupldr .uploadr .preview {
+  margin: 0 -10px -10px;
+  padding: 0;
+  list-style: none;
+}
+.qsvupldr .uploadr .preview:before,
+.qsvupldr .uploadr .preview:after {
+	display: table;
+	content: " ";
+}
+.qsvupldr .uploadr .preview:after {
+	clear: both;
+}
+.qsvupldr .uploadr .preview li {
+  float: left;
+  margin: 10px;
+}
+
+.qsvupldr .uploadr .item {
+	position: relative;
+}
+.qsvupldr .uploadr .item a {
+	display: block;
+	overflow: hidden;
+}
+.qsvupldr .uploadr .item img {
+  max-width: 100%;
+  width: auto;
+  height: 100px;
+}
+
+.qsvupldr .uploadr .item .removei {
+	display: none;
+	position: absolute;
+	color: #f00;
+	cursor: pointer;
+	font-size: 16px;
+	top: -10px;
+	right: -10px;
+	padding: 0 5px;
+	z-index: 100;
+}
+.qsvupldr .uploadr .item .removei:hover {
+	background: #FF0;
+	border-radius: 20px;
+	font-size: 20px;
+	top: -13px;
+	right: -13px;
+	padding: 0 7px;
+}
+.qsvupldr .uploadr .item:hover .removei {
+	display: block;
+}
+
+.qsvupldr .uploadr .handler {
+  display: none;
+}
+.qsvupldr .uploadr[multiple] .handler {
+	position: absolute;
+	background: #f57c00;
+	color: #fff;
+	font-size: 20px;
+	cursor: move;
+	left: 0;
+	top: 0;
+	padding: 0 7px;
+	text-align: center;
+	z-index: 100;
+}
+.qsvupldr .uploadr[multiple] .item:hover .handler {
+	display: block;
+}
+
+.qsvupldr .uploadr .ghost,
+.qsvupldr .uploadr .chosen,
+.qsvupldr .uploadr .drag {
+	background: #eee;
+}
+
+
+.fancybox-nav {
+    width: 60px;       
+}
+.fancybox-nav span {
+    visibility: visible;
+    opacity: 0.2;
+}
+.fancybox-nav:hover span {
+    opacity: 1;
+}
+.fancybox-next {
+    right: -60px;
+}
+.fancybox-prev {
+    left: -60px;
+}

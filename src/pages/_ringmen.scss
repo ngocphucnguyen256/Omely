@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap');
+.ringmen{
+  background: #070709;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  h1,h2,h3,h4,h5,p,a,span,li{
+    color: white;
+  }
+  h1,h2,h3,h4,h5{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+  }
+}
+.filter-ringmen{
+  background: #070709;
+  color: white;
+  margin-top: 0;
+  padding-top: 50px;
+  padding-bottom: 5px;
+  a{
+    color: white;
+  }
+}
+.menu-ringmen{
+  .ringmen-menu-desktop{
+    padding-top: 20px;
+    @include media-breakpoint-down(sm){
+      display: none;
+    }
+    .logo-header{
+      text-align: center;
+      img{
+        height: 55px;
+      }
+    }
+    a{
+      color:white;
+    }
+    div{
+      background: #070709;
+    }
+    .menu-mega-1{
+      li{
+        margin-left: 20px;
+      }
+    } 
+  }
+  .ringmen-menu-mobile{
+    background: #070709;
+    .logo-sm{
+      max-height: 40px;
+      height: 100%;
+    }
+    .navbar-toggler{
+      span{
+        color: white;
+      }
+    }
+  }
+}
+
+.ringmen-banner{
+  .genesys-box{
+    h2,p{
+      color: white;
+    }
+  }
+}

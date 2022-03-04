@@ -1,0 +1,60 @@
+.fullscreen {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &:before {
+    display: block;
+    position: absolute;
+    background: #000;
+    opacity: 0.5;
+    content: "";
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:after {
+    position: absolute;
+    background-image: url(../img/tierra.jpg);
+    background-size: cover;
+    background-position: center center;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+.error {
+  position: relative;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3.5rem;
+
+    i {
+      font-size: 4rem;
+      line-height: 1;
+      vertical-align: text-bottom;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .back {
+    display: block;
+    margin-top: 20px;
+  }
+}

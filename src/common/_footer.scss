@@ -1,0 +1,215 @@
+
+footer{
+  background: #111111;
+  border-top: 1px solid theme-color(primary);
+  font-size: 15px;
+  padding-top: 60px;
+  padding-bottom: 100px;
+
+  h2,h3,h4,p,a,li,span{
+    color: white;
+  }
+  h5{
+    color: $third-color;
+    a{
+      color: $third-color;
+      &:hover{
+        color: $third-color;
+      }
+    }
+  }
+  .container{
+    width: 90%;
+    .follow-us{
+      margin-top: 0px;
+      p{
+        a{
+          background: #000;
+          border-radius: 20px;
+          display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          margin-right: 5px;
+          margin-left: 5px;
+          margin-top: 5px;
+          text-align: center;
+          width: 30px;
+          img{
+            height: 15px;
+          }
+        }
+      }
+    }
+    
+
+  }
+  .row{
+    @include media-breakpoint-up(md){
+      .col-md-2{
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    h5{
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    ul{
+      margin-top: 20px;
+      padding-left: 0;
+      li{
+        list-style-type: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        &:hover{
+          a{
+            color: white;
+          }
+        }
+      }
+    }
+    h4{
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+    .send-mail-footer{
+      // order: 1;
+      margin-top: 50px;
+      .box-input-footer{
+        border-radius: 2px;
+        border: 1px solid #eee;
+        display: inline-block;
+        width: 70%;
+        input{
+          border: 0px solid #fff;
+          height: 40px;
+          padding-left: 10px;
+          width: 100%;
+        }
+      }
+      a{
+        background: #2D1F14;
+        border-radius: 2px;
+        color: white;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        width: 28%;
+      }
+    }
+    @include media-breakpoint-down(sm){
+      .follow{
+        order: 1;
+        text-align: center;
+      }
+      .send-mail-footer{
+        text-align: center;
+        margin-top:20px;
+        order: 2;
+      }
+      .list-menu-footer{
+        margin-top: 40px;
+        order: 3;
+      }
+    }
+  }
+  .info-company{
+    margin-top: 47px;
+    p{
+      text-align: center;
+      img{
+        max-width: 190px;
+        width: 100%;
+      }
+    }
+    ul{
+      margin: 0;
+      margin-top: 20px;
+      padding: 0;
+      text-align: center;
+      li{
+        border-right: 1px solid #ccc;
+        display: inline-block;
+        list-style-type: none;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      li:last-child(){
+        border-right: none;
+      }
+    }
+    .info-contact-footer{
+      li{
+        border-right: none;
+        @include media-breakpoint-down(sm) {
+          display: block;
+          margin-top: 20px;
+          text-align: left;
+        }
+      }
+    }
+  }
+  &.ringmen{
+    padding-bottom: 0;
+    .copyright{
+      margin-top: 20px;
+      padding-bottom:20px;
+      p{
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.cta-scroll-all{
+  // background: white;
+  bottom: 5%;
+  // border-top: 1px solid rgba(theme-color(primary), 0.1);
+  // height: 70px;
+  right: 3%;
+  position: fixed;
+  // transform: translate(-50%, 0);
+  // width: 100%;
+  z-index: 2;
+  .r{
+    div{
+      padding-top: 10px;
+      button,a{
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 400;
+        height: 50px;
+        line-height: 50px;
+
+        padding: 0;
+        text-align:center;
+        width: 50px;
+      }
+      a{
+        background: theme-color(primary);
+        color: white;
+        font-family: $font-family-sans-change;
+        font-size: 18px;
+      }
+      button{
+        border: 2px solid $third-color;
+        background: $third-color;
+        color: white;
+      }
+    }
+  }
+  // @include media-breakpoint-down(sm) {
+  //   border-top: none;
+  //   height: 50px;
+  //   .row{
+  //     div{
+  //       padding: 0px;
+  //       button,a{
+  //         border-radius: 0;
+  //       }
+  //     }
+  //   }
+  // }
+}

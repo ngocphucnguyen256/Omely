@@ -1,0 +1,292 @@
+/* Popup style */
+.modal {
+  .modal-title {
+    color: #575757;
+    text-align: left;
+  }
+
+  .close {
+    position: absolute;
+    background: #f00;
+    border: 1px solid #f99;
+    border-radius: 20px;
+    color: #fff;
+    top: -12px;
+    right: -12px;
+    width: 26px;
+    height: 26px;
+    line-height: 24px;
+    z-index: 1;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .modal-header, .modal-body {
+      padding: 15px;
+    }
+    .modal-header + .modal-body {
+      padding-top: 0;
+    }
+  }
+}
+
+/* Yeu cau tu van */
+.modal-request {
+  background: white;
+  padding: 30px;
+  text-align: center;
+
+  .modal-body & {
+    padding: 0;
+    margin-top: -15px;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  .note {
+    font-size: 0.82rem;
+  }
+
+  .split {
+    position: relative;
+    margin: 30px 0;
+
+    .line {
+      border-top: 1px solid #ccc;
+      width: 100%;
+      height: 1px;
+    }
+
+    .or {
+      position: absolute;
+      display: block;
+      background: #fff;
+      font-size: 14px;
+      left: 50%;
+      top: 0;
+      margin-top: -2px;
+      margin-left: -40px;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+  }
+
+  .form-input {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 15px;
+
+    .image {
+      padding-bottom: 20px;
+    }
+    
+    .title {
+      font-size: 1.2rem;
+    }
+    .note {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .split {
+      margin: 20px 0;
+    }
+  }
+}
+
+
+.form-dangnhap {
+  & > .row {
+    padding: 7px 0;
+
+    & > div {
+      margin-bottom: 10px;
+    }
+  }
+
+  .pass-text {
+    color: #d0d0d0;
+    margin-bottom: 0;
+    padding-top: 8px;
+    font-size: 12px;
+  }
+}
+
+.tabbable {
+  .tab-content {
+    border: none;
+    padding-top: 20px;
+    margin-right: 20px;
+
+    @include media-breakpoint-down(sm) {
+      margin-right: 0;
+      padding-bottom: 100px;
+    }
+  }
+
+  .nav-tabs {
+    border-bottom: 1px solid #ccc;
+    box-shadow: none;
+
+    & > li {
+      padding-bottom: 5px;
+      margin-right: 15px;
+
+      a {
+        color: #333;
+        border-radius: 0;
+        outline: none;
+
+        &.active {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .line {
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    right: -20px;
+    width: 40px;
+
+    .line-dotted {
+      border-right: 1px dotted #ccc;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+    }
+
+    .or-circle {
+      position: absolute;
+      display: block;
+      background: #ccc;
+      border-radius: 20px;
+      font-size: 12px;
+      left: 0;
+      top: 50%;
+      margin-top: -20px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .line {
+      top: auto;
+      bottom: 10px;
+      left: 15px;
+      right: 15px;
+      width: auto;
+      height: 40px;
+
+      .line-dotted {
+        border-top: 1px dotted #ccc;
+        border-right: none;
+        height: 1px;
+        width: 100%;
+      }
+
+      .or-circle {
+        left: 50%;
+        top: 0;
+        margin-left: -20px;
+      }
+    }
+  }
+}
+
+.byoauth {
+  p {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .social {
+    padding: 30px 0;
+
+    .btn {
+      @extend %clear;
+      display: block;
+      border-radius: 0;
+      margin: 10px auto;
+      padding: 0;
+      width: 132px;
+      text-transform: none;
+
+      &:hover,
+      &:focus {
+        outline: none;
+      }
+
+      i {
+        float: left;
+        font-size: 16px;
+        padding: 7px 0;
+        width: 30px;
+      }
+
+      span {
+        float: left;
+        font-weight: bold;
+        padding: 8px 0;
+        width: 100px;
+      }
+    }
+
+    .btn-facebook {
+      border: 1px solid #4b64a5;
+      color: #4b64a5;
+
+      i {
+        background: #4b64a5;
+        color: #fff;
+      }
+    }
+
+    .btn-google {
+      border: 1px solid #de4a32;
+      color: #de4a32;
+
+      i {
+        background: #de4a32;
+        color: #fff;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    p {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .social {
+      padding: 0;
+
+      .btn {
+        display: inline-block;
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+}
