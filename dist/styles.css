@@ -16974,7 +16974,6 @@ header .box-menu--desktop {
 header .box-menu--desktop .topbar {
   background-image: linear-gradient(to right, #f47621, #a87741);
   height: 35px;
-  padding-top: 5px;
 }
 
 header .box-menu--desktop .topbar .gene-hotline {
@@ -16985,6 +16984,36 @@ header .box-menu--desktop .topbar .gene-hotline {
 
 header .box-menu--desktop .topbar .gene-hotline span {
   font-size: 18.5px;
+}
+
+header .box-menu--desktop .topbar .logo-header {
+  text-align: center;
+}
+
+header .box-menu--desktop .topbar .logo-header .fix-pagespeed {
+  width: 320px;
+}
+
+header .box-menu--desktop .topbar .logo-header img {
+  margin-bottom: 0px;
+  height: 100px;
+  width: auto;
+}
+
+header .box-menu--desktop .topbar p {
+  color: white;
+}
+
+header .box-menu--desktop .topbar .quote {
+  margin-left: 10px;
+}
+
+header .box-menu--desktop .topbar .cart {
+  margin-left: auto;
+}
+
+header .box-menu--desktop .topbar .cart button {
+  background-color: #BB7739;
 }
 
 header .box-menu--desktop .menu-mega-1 {
@@ -17002,28 +17031,6 @@ header .box-menu--desktop .box-content-menu {
   margin-top: 0px;
 }
 
-header .box-menu--desktop .box-content-menu .logo-header {
-  text-align: center;
-}
-
-header .box-menu--desktop .box-content-menu .logo-header .fix-pagespeed {
-  width: 320px;
-}
-
-header .box-menu--desktop .box-content-menu .logo-header img {
-  margin-top: 20px;
-  margin-bottom: 0px;
-  height: 35px;
-}
-
-@media (max-width: 767.98px) {
-  header .box-menu--desktop .box-content-menu .logo-header img {
-    margin-top: 5px;
-    height: auto !important;
-    width: 100%;
-  }
-}
-
 header .box-menu--desktop .box-content-menu.gene-menu-main {
   margin-top: 10px;
 }
@@ -17035,6 +17042,7 @@ header .box-menu--desktop .box-content-menu.gene-menu-main ul li {
 
 header .box-menu--desktop .box-content-menu.gene-menu-main ul li a {
   display: block;
+  font-weight: bold;
 }
 
 header .box-menu--desktop .box-content-menu.gene-menu-main ul li.dtri-edit {
@@ -17046,7 +17054,7 @@ header .box-menu--desktop .box-content-menu.gene-menu-main ul li.dtri-edit {
 
 header .box-menu--desktop .box-content-menu.gene-menu-main ul li.dtri-edit .edit-son {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: bold;
   height: 50px;
   line-height: 50px;
   text-align: center;
@@ -17074,34 +17082,42 @@ header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu {
   padding-top: 50px;
   padding-bottom: 50px;
   position: absolute;
-  text-align: left;
-  top: 140px;
+  text-align: center;
   width: 100%;
   z-index: 10;
 }
 
 header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu h3 {
   font-size: 16px;
-  color: #000;
+  color: #f47621;
   font-weight: 600;
   text-transform: uppercase;
+  margin-bottom: 0px !important;
+  margin-bottom: 30px;
+}
+
+header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu dd {
+  width: 100%;
 }
 
 header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0;
+  margin-bottom: 60px;
 }
 
 header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu ul li {
   height: 30px;
   line-height: 1.5;
-  margin-left: 0;
-  text-align: left;
-  width: 100%;
 }
 
 header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu ul li a {
-  color: #f47621;
-  font-weight: 400;
+  color: black;
+  font-weight: bold;
 }
 
 header .box-menu--desktop .menu-mega-2 li.active-mega-menu .box-mega-menu ul li a:hover {
@@ -17167,8 +17183,16 @@ header.gene-menu-blog a.edit-son {
   color: white;
 }
 
-header.gene-menu-blog .gene-hotline {
-  color: white;
+.gene-hotline {
+  margin-left: auto;
+  color: #f47621;
+  font-weight: bold;
+}
+
+.gene-hotline span {
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
 }
 
 .bgMenunav {

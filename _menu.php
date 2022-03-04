@@ -70,9 +70,14 @@ if($rs = $dx->get_results($s)){
     <section class="topbar">
       <div class="container">
         <div class="row ">
-        
-          <div class="col">
-            <button><i class="material-icons">ShoppingCart</i></button>
+        <div class="logo-header">
+            <a href="<?=URL_Rewrite('')?>"><img src="<?=$web['logo']?>" alt="logo-music-new1.png" ></a>
+        </div>
+        <div class="quote">
+            <p>Cung cấp đồ dùng khách sạn chất lượng với giá cạnh tranh</p>
+          </div>
+          <div class="cart ">
+            <button >🧰</button>
           </div>
           <!-- <div class="col box-search">
             <form action="/san-pham">
@@ -86,11 +91,7 @@ if($rs = $dx->get_results($s)){
       </div>
     </section>
 
-    <!-- <div class="box-content-menu" >
-      <div class="logo-header">
-        <a href="<?=URL_Rewrite('')?>"><img src="<?=$web['logo']?>" alt="logo-music-new1.png" ></a>
-      </div>
-    </div> -->
+
     <div class="box-content-menu gene-menu-main">
       <ul class="menu-mega-2">
       <?
@@ -106,22 +107,38 @@ if($rs = $dx->get_results($s)){
           <a class="edit-son" href="<?=$m['link']?>"><?=$m['name']?></a>
           <div class="box-mega-menu">
             <div class="container">
-              <dl class="row">
+              <dl class="row" style=" justify-content: center;">
                 <? foreach($m['sub'] as $s){?>
-                <dd class="col-md-3">
-                  <h3><?=$s['name']?></h3>
-                  <ul>
-                    <? foreach($s['three'] as $e){?>
-                    <li><a href="<?=$e['link']?>"><?=$e['name']?></a></li>
-                    <?}?>
-                  </ul>
+                  <?
+                  if(count($s['three'])==0){
+                    ?>
+                  
+                    <ul style="width: auto;">
+                      <li><a href="<?=$s['link']?>"><?=$s['name']?></a></li>
+                    </ul>
+                
+
+                  <?
+                  }
+                  else{
+                  ?>
+                  <dd>
+                      <h3><?=$s['name']?></h3>
+                      <ul >
+                        <? foreach($s['three'] as $e){?>
+                        <li><a href="<?=$e['link']?>"><?=$e['name']?></a></li>
+                        <?}?>
+                      </ul>
+                  <?}?>
+                  
+                
                 </dd>
                 <?}?>
-                <dd class="col-md-6">
+                <!-- <dd class="col-md-6">
                   <a href="<?=$m['link']?>">
                     <img src="<?=$m['icon']?>" data-src="<?=$m['rias']?>" data-widths="[250,500,800,1000,1200]" data-optimumx="1.6" data-sizes="auto" class="lazyload">
                   </a>
-                </dd>
+                </dd> -->
               </dl>
             </div>
           </div>
@@ -151,9 +168,9 @@ if($rs = $dx->get_results($s)){
         }
       }
       ?>
-        <div class="col gene-hotline" style="text-align:right;">
-            Hotline: <?=$web['hotline']?>
-          </div>
+        <li class="gene-hotline" style="text-align:right;">
+          Hotline:  <span><?=$web['hotline']?></span>
+       </li>
       </ul>
     
     </div>

@@ -357,7 +357,6 @@ header {
     .topbar {
       background-image: linear-gradient(to right, $third-color, #a87741);
       height: 35px;
-      padding-top: 5px;
       .gene-hotline {
         font-size: 14px;
         color: white;
@@ -365,6 +364,32 @@ header {
 
         span {
           font-size: 18.5px;
+        }
+      }
+      
+      .logo-header {
+  
+        text-align: center;
+        .fix-pagespeed{ 
+          width: 320px;
+        }
+        img {
+          margin-bottom: 0px;
+          height: 100px;
+          width: auto;
+    
+        }
+      }
+      p{
+        color: white;
+      }
+      .quote{
+        margin-left: 10px;
+      }
+      .cart{
+        margin-left: auto;
+        button{
+          background-color:#BB7739;
         }
       }
     }
@@ -382,22 +407,6 @@ header {
     .box-content-menu {
       margin-top: 0px;
 
-      .logo-header {
-        text-align: center;
-        .fix-pagespeed{ 
-          width: 320px;
-        }
-        img {
-          margin-top: 20px;
-          margin-bottom: 0px;
-          height: 35px;
-          @include media-breakpoint-down(sm) {
-            margin-top: 5px;
-            height: auto !important;
-            width: 100%;
-          }
-        }
-      }
       &.gene-menu-main {
         margin-top: 10px;
         ul {
@@ -406,15 +415,17 @@ header {
             padding-bottom: 15px;
             a {
               display: block;
+              font-weight: bold;
             }
             &.dtri-edit {
+              
               padding-top: 0;
               padding-bottom: 0;
               padding-bottom: auto;
               height: 50px;
               .edit-son {
                 font-size: 18px;
-                font-weight: 400;
+                font-weight: bold;
                 height: 50px;
                 line-height: 50px;
                 text-align: center;
@@ -446,28 +457,39 @@ header {
             padding-top: 50px;
             padding-bottom: 50px;
             position: absolute;
-            text-align: left;
-            top: 140px;
+            text-align: center;
+            // top: 140px;
             width: 100%;
             z-index: 10;
 
             h3 {
               font-size: 16px;
-              color: #000;
+              color: $third-color;
               font-weight: 600;
               text-transform: uppercase;
+              margin-bottom: 0px !important;
+              margin-bottom: 30px;
+            }
+            dd{
+
+              width: 100%;
             }
             ul {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              justify-content: center;
               padding: 0;
+              margin-bottom: 60px;
               li {
                 height: 30px;
                 line-height: 1.5;
-                margin-left: 0;
-                text-align: left;
-                width: 100%;
+    
+              
                 a {
-                  color: theme-color(primary);
-                  font-weight: 400;
+                  color: black;
+                  font-weight: bold;
                   &:hover {
                     color: theme-color(primary);
                   }
@@ -495,6 +517,7 @@ header {
               display: flex;
               flex-flow: row wrap;
               justify-content: center;
+          
               .content-menu {
                 width: 250px;
                 margin: 10px;
@@ -538,11 +561,22 @@ header {
     a.edit-son {
       color: white;
     }
-    .gene-hotline {
-      color: white;
-    }
+  
   }
 }
+
+.gene-hotline{
+  margin-left: auto;
+  color: $third-color;
+  font-weight: bold;
+ 
+  span{
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+  }
+}
+
 
 .bgMenunav {
   background: rgba(0, 0, 0, 0.5);
