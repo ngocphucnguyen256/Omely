@@ -847,3 +847,17 @@ box-content-product
     z-index: 2 !important;
   }
 }
+
+.product-cata-list{
+  margin-bottom: 120px;
+  h2{
+    margin-top: 10px;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 20px;
+  }
+}

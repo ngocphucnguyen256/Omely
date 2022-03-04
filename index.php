@@ -61,7 +61,9 @@
     }
   }
 
-// --------------------------- removed product intro 3/3/2022 ------------------------------
+
+
+
   
   $wh = '';//lw();
   $wh .= ($wh==''?'':'AND')."(Hot='1')";
@@ -99,7 +101,7 @@
     
   }
 
-// --------------------------- removed product hot list 3/3/2022 ------------------------------
+
 
 
   $wh = lw();
@@ -164,32 +166,60 @@
 
       $list[] = $info;
     }
-  }
+  }?>
 
-  foreach($list as $catalog){?>
-    <section class="genesys-engagement-dt cover-size-new">
-      <div class="genesys-catalog-index" >
-        <a href="<?=$catalog['link']?>">
-          <img src="<?=$catalog['thumb']?>" data-src="<?=$catalog['rias']?>" data-widths="[480,640,800,1280,1600,2560]" data-optimumx="1.6" data-sizes="auto" class="lazyload">
-        </a>
-        <div class="content-box marg-top <?=$catalog['coltet']?>">
-          <div class="container">
-            <div class="row">
-              <div class="offset-lg-1 <?=$catalog['vt']?>-lg-8 col-lg-4 col-12 product-pagehome">
-                <div class="genesys-box">
-                    <h2><?=$catalog['name']?></h2>
-                    <p ><?=$catalog['brief']?></p>
-                    <p><a href="<?=$catalog['link']?>"><?=lg('FindOut')?></a></p>
-                </div>
-              </div>
+   <section class="product-cata-list">
+     <h2>Danh mục đồ dùng khách sạn</h2>
+      <div class="grid">
+      <?foreach($list as $catalog){?>
+        <div class="">
+          <div class="genesys-catalog-index" >
+            <a href="<?=$catalog['link']?>">
+              <img src="<?=$catalog['thumb']?>" data-src="<?=$catalog['rias']?>" data-widths="[480,640,800,1280,1600,2560]" data-optimumx="1.6" data-sizes="auto" class="lazyload">
+            </a>
+            <div class="content-box marg-top <?=$catalog['coltet']?>">
+              <h2><?=$catalog['name']?></h2>
             </div>
           </div>
         </div>
+      <?
+      }?>
+      <div>
+  </section>
+
+
+
+  <?
+
+if(count($product)>0) {
+  ?>
+  <section class="genesys-product-hot">
+    <div class="container">
+      <h2><?=lg('Product Hot')?></h2>
+      <div class="row">
+        <? foreach($product as $a){?>
+          <div class="col-md-3 col-6">
+            <a href="<?=$a['link']?>">
+              <div class="box-content-product ">
+                <div class="box-img-product">
+                  <img src="<?=$a['thumb']?>" data-src="<?=$a['rias']?>" data-widths="[250,500,800,1000,1200]" data-optimumx="1.6" data-sizes="auto" class="lazyload" alt="<?=$a['name']?>">
+                </div>
+                <h3 style="font-weight: 500;"><?=$a['name']?></h3>
+                <p><? if($a['promo']!=0) {?>
+                  <?=$a['promo']?> <small style="text-decoration:line-through"><?=$a['price']?></small>
+                <? }else echo $a['price']?></p>
+                <!-- <span href="#!"><?=lg('SeeMore')?></span> -->
+              </div>
+            </a>
+          </div>
+        <?}?>
       </div>
-    </section>
+    </div>
+  </section>
   <?
   }
-  
+
+
   // Khám phá
   $wh = lw();
   $wh .= ($wh==''?'':'AND')."(Active='1')";
