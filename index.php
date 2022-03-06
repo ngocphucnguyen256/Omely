@@ -135,12 +135,68 @@
   <?
   }
   
-  // Danh muc quan trong
+  // Danh muc chinh
   $s = "SELECT * FROM ".PREFIX_NAME."product_catalog".SUPFIX_NAME."
-        WHERE chID=0 AND Loai='1' ORDER BY Thutu LIMIT 6";
+        WHERE chID=0 AND Loai='1' ORDER BY Thutu";
   $list = [];
   if($rs = $dx->get_results($s)){
     foreach($rs as $r){
+      $subList=[];
+
+      //danh muc con
+      $ss = "SELECT * FROM ".PREFIX_NAME.'product_catalog'.SUPFIX_NAME."
+      WHERE chID='".$r->catID."' ".lw('AND')." ORDER BY Thutu";
+      if($rrs = $dx->get_results($ss)){
+        foreach($rrs as $rr){
+          $subList[] = [
+            'link'		=> URL_Rewrite($rr->URL),
+            'name'		=> stripslashes($rr->Ten),
+            'thumb'	=> ThumbImage($rr->Anh,300),
+     
+          ];
+        }
+      }
+
+      //san pham hot cua tung danh muc
+      $wh = '';//lw();
+      $wh .= ($wh==''?'':'AND')."(Hot='1')";
+      $wh .= ($wh==''?'':'AND')."(Hot='1')";
+      $wh .= ($wh==''?'':'AND')."(Active='1')";
+      $wh = ($wh==''?'':'WHERE').$wh;
+
+      $ps = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." $wh
+            ORDER BY SKU ASC LIMIT 4";
+      $product = [];
+      if($ps = $dx->get_results($ps)){
+        foreach($ps as $pr){
+          $info = [
+            'name'		=> stripslashes($pr->Ten),
+            'image'		=> ThumbImage($pr->Anh,500),
+            'thumb'		=> ThumbImage($pr->Anh,150),
+            'rias'		=> ThumbImage($pr->Anh,'{width}'),
+            'price'   => format_money($pr->Giaban,'đ',lg('Contact')),
+            'promo'   => format_money($pr->GiaKM,'đ',0),
+            'brief'		=> CutString($pr->Tomtat,150),
+            'link'		=> URL_Rewrite('san-pham',$pr->URL)
+          ];
+
+          // Da ngon ngu
+          if(MULTI_LANGUAGE && lc()!=DEFAULT_LANGUAGE){
+            $ss = "SELECT * FROM ".PREFIX_NAME."product_lg".SUPFIX_NAME."
+                  WHERE lgID='".$pr->proID."' ".lw('AND');
+            if($rr = $dx->get_row($ss)){
+              $info['name'] = stripslashes($rr->Ten);
+              $info['brief'] = CutString($rr->Tomtat,150);
+            }
+          }
+
+          $product[] = $info;
+        }
+        
+      }
+   
+      
+      
       $info = [
         'name'		=> stripslashes($r->Ten),
         'image'		=> ThumbImage($r->Anh,1200),
@@ -151,6 +207,7 @@
         'vt'	  	=> $r->Vitri,
         'link'		=> URL_Rewrite($r->URL),
         'coltet' => stripslashes($r->colorCat),
+        'subList' => $subList
       ];
 
       // Da ngon ngu
@@ -168,26 +225,32 @@
     }
   }?>
 
-   <section class="product-cata-list">
-     <h2>Danh mục đồ dùng khách sạn</h2>
-      <div class="grid">
-      <?foreach($list as $catalog){?>
-        <div class="">
-          <div class="genesys-catalog-index" >
-            <a href="<?=$catalog['link']?>">
-              <img src="<?=$catalog['thumb']?>" data-src="<?=$catalog['rias']?>" data-widths="[480,640,800,1280,1600,2560]" data-optimumx="1.6" data-sizes="auto" class="lazyload">
-            </a>
-            <div class="content-box marg-top <?=$catalog['coltet']?>">
-              <h2><?=$catalog['name']?></h2>
-            </div>
-          </div>
-        </div>
-      <?
-      }?>
-      <div>
-  </section>
-
-
+<?
+foreach($list as $catalog){?>
+    <section class="product-cata-list">
+      <div class="container">
+        <h2>Danh mục sản phẩm <?=$catalog['name'] ?></h2>
+          <?
+          if(count($catalog['subList'])>0){?>
+            <div class="grid" >
+            <?
+            foreach($catalog['subList'] as $subCatalog){?>
+              <div>
+                <a href="<?=$subCatalog['link']?>">
+                <img src="<?=$subCatalog['thumb']?>"   class="lazyload">
+                <h3><?=$subCatalog['name']?></h3>
+              </a>
+              </div>
+          <?}?>
+           </div>
+          <?}else{?>
+            <h2>Danh mục đang cập nhật thêm sản phẩm</h2>
+          <?}?>
+       
+      </div>
+    </section>
+  <?
+  }?>
 
   <?
 

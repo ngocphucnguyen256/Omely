@@ -256,7 +256,12 @@
           </div>
           <p class="box-btn">
             <button class="primary-btn" onclick="PlaceOrder()"><?=lg('Booking')?></button>
+         
           </p>
+          <div style="display:flex; align-items:center; ">
+            <button class="primary-btn" onclick="PlaceOrder()">Thêm vào giỏ hàng</button>
+          <p style="magin:unset !important;"> Hoặc </p>
+          <button class="primary-btn" onclick="PlaceOrder()">Mua ngay</button></div>
           <p class="note-product-detail">
             <?=$prod['note']?>
           </p>

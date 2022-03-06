@@ -853,7 +853,10 @@ box-content-product
   h2{
     margin-top: 10px;
     margin-bottom: 60px;
-    text-align: center;
+  
+  }
+  h3{
+    text-align: center !important;
   }
   .grid{
     display: grid;
