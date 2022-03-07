@@ -587,3 +587,36 @@
     text-align:center;
   }
 }
+
+
+
+.button-wrapper{
+  margin-top: 60px;
+  button{
+    display: inline-block;
+    margin-right: 30px;
+  }
+}
+.product-amount{
+  display: flex;
+  align-items: center;
+  .button-amount{
+    padding: 5px;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+  }
+  input{
+    width: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}

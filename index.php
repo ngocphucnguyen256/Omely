@@ -157,26 +157,37 @@
         }
       }
 
-      //san pham hot cua tung danh muc
-      $wh = '';//lw();
-      $wh .= ($wh==''?'':'AND')."(Hot='1')";
-      $wh .= ($wh==''?'':'AND')."(Hot='1')";
-      $wh .= ($wh==''?'':'AND')."(Active='1')";
-      $wh = ($wh==''?'':'WHERE').$wh;
+      //san pham hot cua tung danh muc v
+      // Phan trang
+
+      $wh2 = '';//lw();
+
+ 
+      // Danh muc san pham
+      if(!empty($_GET['ctl'])) $catID = safe($_GET['ctl']);
+      if(!empty($catID)) {
+        $wh2 .= ($wh2==''?'':'AND')."(Danhmuc LIKE '%#$catID#%')";
+      }
+
+
+
+      $wh2 .= ($wh2==''?'':'AND')."(Active='1')";
+      $wh2 = ($wh2==''?'':'WHERE').$wh2;
 
       $ps = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." $wh
-            ORDER BY SKU ASC LIMIT 4";
-      $product = [];
+            ORDER BY Status, SKU ASC LIMIT 4";
+      //echo "SQL: $ps";
+      $listProduct = [];
       if($ps = $dx->get_results($ps)){
         foreach($ps as $pr){
-          $info = [
+          $infoProduct = [
             'name'		=> stripslashes($pr->Ten),
             'image'		=> ThumbImage($pr->Anh,500),
             'thumb'		=> ThumbImage($pr->Anh,150),
             'rias'		=> ThumbImage($pr->Anh,'{width}'),
-            'price'   => format_money($pr->Giaban,'đ',lg('Contact')),
+            'price'   => format_money($pr->Giaban,'đ',lg("Contact")),
             'promo'   => format_money($pr->GiaKM,'đ',0),
-            'brief'		=> CutString($pr->Tomtat,150),
+            'brief'		=> Html2Text($pr->Tomtat,150),
             'link'		=> URL_Rewrite('san-pham',$pr->URL)
           ];
 
@@ -185,16 +196,17 @@
             $ss = "SELECT * FROM ".PREFIX_NAME."product_lg".SUPFIX_NAME."
                   WHERE lgID='".$pr->proID."' ".lw('AND');
             if($rr = $dx->get_row($ss)){
-              $info['name'] = stripslashes($rr->Ten);
-              $info['brief'] = CutString($rr->Tomtat,150);
+              $infoProduct['name'] = stripslashes($rr->Ten);
+              $infoProduct['brief'] = CutString($rr->Tomtat,150);
             }
           }
 
-          $product[] = $info;
+          $listProduct[] = $infoProduct;
         }
-        
       }
-   
+      
+
+
       
       
       $info = [
@@ -207,7 +219,9 @@
         'vt'	  	=> $r->Vitri,
         'link'		=> URL_Rewrite($r->URL),
         'coltet' => stripslashes($r->colorCat),
-        'subList' => $subList
+        'subList' => $subList,
+        'listProduct' => $listProduct,
+        
       ];
 
       // Da ngon ngu
@@ -232,7 +246,7 @@ foreach($list as $catalog){?>
         <h2>Danh mục sản phẩm <?=$catalog['name'] ?></h2>
           <?
           if(count($catalog['subList'])>0){?>
-            <div class="grid" >
+            <div class="grid">
             <?
             foreach($catalog['subList'] as $subCatalog){?>
               <div>
@@ -246,21 +260,15 @@ foreach($list as $catalog){?>
           <?}else{?>
             <h2>Danh mục đang cập nhật thêm sản phẩm</h2>
           <?}?>
-       
+            
       </div>
-    </section>
-  <?
-  }?>
-
-  <?
-
-if(count($product)>0) {
+      <?if(count($product)>0) {
   ?>
   <section class="genesys-product-hot">
     <div class="container">
-      <h2><?=lg('Product Hot')?></h2>
+      <h2><?=lg('Product Hot')?> <?=$catalog['name'] ?></h2>
       <div class="row">
-        <? foreach($product as $a){?>
+        <? foreach($catalog['listProduct'] as $a){?>
           <div class="col-md-3 col-6">
             <a href="<?=$a['link']?>">
               <div class="box-content-product ">
@@ -280,7 +288,14 @@ if(count($product)>0) {
     </div>
   </section>
   <?
-  }
+  }?>
+    </section>
+  <?
+  }?>
+
+  <?
+
+
 
 
   // Khám phá
@@ -304,17 +319,7 @@ if(count($product)>0) {
     }
   }
   
-  if(count($list)>0) {?>
-  <section class="discover discover-home">
-    <h2><?=lg('genesysShop')?></h2>
-    <p class="seemore"></p>
-    <section class="center slider">
-      <? foreach($list as $a){?>
-        <a href="<?=$a['link']?>"><img src="<?=$a['image']?>" data-src="<?=$a['rias']?>" data-widths="[400,800,1200,1600,2400]" data-optimumx="1.6" data-sizes="auto" class="lazyload"></a>
-      <?}?>
-    </section> 
-  </section>
-  <? }
+  //---------------------removed omely va khach hang-------------------------
   // Tin tuc
   $wh = lw();
 	$wh .= ($wh==''?'':'AND')."(Active='1')";

@@ -254,14 +254,17 @@
             <? }
             }?>
           </div>
-          <p class="box-btn">
-            <button class="primary-btn" onclick="PlaceOrder()"><?=lg('Booking')?></button>
-         
-          </p>
-          <div style="display:flex; align-items:center; ">
-            <button class="primary-btn" onclick="PlaceOrder()">Thêm vào giỏ hàng</button>
-          <p style="magin:unset !important;"> Hoặc </p>
-          <button class="primary-btn" onclick="PlaceOrder()">Mua ngay</button></div>
+          <div class="product-amount">
+            <label for="name">Số lưọng</label>
+               <div class="dec button-amount">-</div>
+              <input type="text" name="product-amount" id="product-amount" value="1">
+              <div class="inc button-amount">+</div>
+          </div>
+          <div class="button-wrapper">
+             <button class="primary-btn" onclick="PlaceOrder()">Thêm vào giỏ hàng</button>
+             <button class="primary-btn" onclick="PlaceOrder()">Mua ngay</button>
+             <button class="primary-btn" onclick="PlaceOrder()"><?=lg('Booking')?></button>
+          </div>
           <p class="note-product-detail">
             <?=$prod['note']?>
           </p>
@@ -624,6 +627,27 @@
     
     return false;
   }
+
+  //product_amount
+  $(".button-amount").on("click", function() {
+
+      var $button = $(this);
+      var oldValue = $("#product-amount").val();
+
+      if ($button.text() == "+") {
+        var newVal = parseFloat(oldValue) + 1;
+      } else {
+      // Don't allow decrementing below zero
+        if (oldValue > 0) {
+          var newVal = parseFloat(oldValue) - 1;
+        } else {
+          newVal = 0;
+        }
+      }
+
+      $("#product-amount").val(newVal);
+
+      });
   </script>
 </body>
 </html>
