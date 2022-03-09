@@ -78,7 +78,7 @@ else {
 
 
 
- <!-- ------------------------------------------------------work--------------------------------------------------------------------------------- -->
+ 
 
   <?
   if(!empty($catID)) {
@@ -695,11 +695,7 @@ else {
       </div>
     </div>
   </div>
-  <?
-  }
-  ?>
-
-<!-- ------------------------------------------------------work--------------------------------------------------------------------------------- -->
+  <!-- ------------------------------work - 9/3/2022 ------------------------------------>
   <section class="filter-btn d-block d-sm-none" style="margin-top: 60px;">
     <div class="container">
       <div class="row no-gutter">
@@ -725,9 +721,6 @@ else {
     </div>
   </section>
   
-
-          <!--------------------- work-filter moved to top empty catID check  section 1-2-2022---------------------------- -->
-
   <section class="genesys-product-hot filter-desktop ">
     <div id="diamond" class="container">
       <div class="row">
@@ -784,6 +777,7 @@ else {
               </form>
               <? }?>
               <h3>DANH MỤC</h3>
+              
               <?
               // Danh muc quan trong
               $s = "SELECT * FROM ".PREFIX_NAME."product_catalog".SUPFIX_NAME."
@@ -824,12 +818,16 @@ else {
                 }
               }
               ?>
+          
+          <?
+              // Danh muc chinh -> hien tat ca danh muc theo hang doc
+          if($chID==0) {?>
               <ul class="sidebar-list">
               <?
-                foreach($list as $catalog){?>
+                foreach($list as $m){?>
                 <li>
-                  <a href="<?=$catalog['link']?>"><?=$catalog['name']?></a>
-                  <div class="side-mega">
+                  <a href="<?=$m['link']?>"><?=$m['name']?></a>
+                  <!-- <div class="side-mega">
                     <ul class="side-sub">
                       <? foreach($catalog['mega'] as $m){?>
                         <li>
@@ -837,12 +835,64 @@ else {
                         </li>
                       <?}?>
                     </ul>
-                  </div>
+                  </div> -->
                 </li>
               <?
               }
               ?>
               </ul>
+          <?}
+          // Danh muc con
+           elseif(count($catalog)>0) {?>
+              <ul class="sidebar-list">
+              <?
+                foreach($catalog as $m){?>
+                <li>
+                  <a href="<?=$m['link']?>"><?=$m['name']?></a>
+                  <!-- <div class="side-mega">
+                    <ul class="side-sub">
+                      <? foreach($catalog['mega'] as $m){?>
+                        <li>
+                          <a href="<?=$m['link']?>"><?=$m['name']?></a>
+                        </li>
+                      <?}?>
+                    </ul>
+                  </div> -->
+                </li>
+              <?
+              }
+              ?>
+              </ul>
+
+            <? }else{
+            //khong co danh muc con thi hien thi danh muc ngang hang
+            ?>
+            
+            <ul class="sidebar-list">
+              <?
+                foreach($samecatalog as $m){?>
+                <li>
+                  <a href="<?=$m['link']?>"><?=$m['name']?></a>
+                  <!-- <div class="side-mega">
+                    <ul class="side-sub">
+                      <? foreach($catalog['mega'] as $m){?>
+                        <li>
+                          <a href="<?=$m['link']?>"><?=$m['name']?></a>
+                        </li>
+                      <?}?>
+                    </ul>
+                  </div> -->
+                </li>
+              <?
+              }
+              ?>
+            </ul>    
+
+
+
+            
+              <? }?>
+             
             </div>
           </div>
           <?
@@ -975,6 +1025,17 @@ else {
       </div>
     </div>
   </section>
+   <!-- ------------------------------work - 9/3/2022 ------------------------------------>
+  <?
+  }
+  ?>
+
+<!-- ------------------------------------------------------work--------------------------------------------------------------------------------- -->
+
+  
+
+          <!--------------------- work-filter moved to top empty catID check  section 1-2-2022---------------------------- -->
+
 
   <section class="content-seo">
   <div class="container compact">

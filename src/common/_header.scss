@@ -444,6 +444,9 @@ header {
                 line-height: 50px;
                 text-align: center;
                 color: $third-color;
+                &:hover {
+                  text-decoration:underline;
+                }
               }
             }
           }
@@ -472,7 +475,7 @@ header {
             padding-bottom: 50px;
             position: absolute;
             text-align: center;
-            // top: 140px;
+            top: 100px;
             width: 100%;
             z-index: 10;
 

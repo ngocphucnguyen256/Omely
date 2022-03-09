@@ -105,7 +105,7 @@ if($rs = $dx->get_results($s)){
           if($m['theme'] !== '1'){
           ?>
         <li class="dtri-edit active-mega-menu">
-          <a class="edit-son" href="<?=$m['link']?>"><?=$m['name']?></a>
+          <p class="edit-son" ><?=$m['name']?></p>
           <div class="box-mega-menu">
             <div class="container">
               <dl class="row" style=" justify-content: center;">
