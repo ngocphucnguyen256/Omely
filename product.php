@@ -946,7 +946,7 @@ else {
             <? if(count($list)>0) {?>
             <div class="row">
               <? foreach($list as $p){?>
-                <div class="col-md-6 col-12">
+                <div class="col-md-4 col-12">
                   <a href="<?=$p['link']?>">
                     <div class="box-content-product">
                       <div class="box-img-product">

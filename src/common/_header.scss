@@ -52,20 +52,7 @@ header {
     > dl.row {
       margin-bottom: 0;
     }
-    .cart-number {
-      background: red;
-      border-radius: 10px;
-      color: white;
-      display: inline-block;
-      font-size: 10px;
-      height: 15px;
-      line-height: 15px;
-      margin-left: -10px;
-      margin-top: -10px;
-      position: absolute;
-      text-align: center;
-      width: 15px;
-    }
+
     .boxpc-logo {
       background: black;
       height: 150px;
@@ -356,7 +343,7 @@ header {
 
     .topbar {
       background-image: linear-gradient(to right, $third-color, #a87741);
-      height: 35px;
+      height: 50px;
       .gene-hotline {
         font-size: 14px;
         color: white;
@@ -385,13 +372,40 @@ header {
       }
       .quote{
         margin-left: 10px;
+        p{
+          margin-top: 1rem;
+          margin-bottom: 1.1rem;
+        }
       }
       .cart{
         margin-left: auto;
+        position: relative;
         button{
           background-color:#BB7739;
+          border: none;
+          margin-top: 10px;
+          img{
+            width:20px;
+            height:20px;
+            
+          }
+        }
+        .cart-number {
+          background: red;
+          border-radius: 10px;
+          color: white;
+          display: inline-block;
+          font-size: 10px;
+          height: 15px;
+          line-height: 15px;
+          margin-left: -10px;
+        
+          position: absolute;
+          text-align: center;
+          width: 15px;
         }
       }
+
     }
 
     .menu-mega-1 {
@@ -408,7 +422,7 @@ header {
       margin-top: 0px;
 
       &.gene-menu-main {
-        margin-top: 10px;
+     
         ul {
           li {
             padding-top: 15px;

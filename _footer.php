@@ -97,10 +97,10 @@
   <div class="">
     <div class="r">
       <div class="">
-        <a href="tel:<?=$web['hotline']?>" class="secondary-btn">📞</a>
+        <a href="tel:<?=$web['hotline']?>" class="secondary-btn"> <img src="img/call.png"></a>
       </div>
       <div class="">
-        <button class="primary-btn genesys-contact-show-popup">💭</button>
+        <button class="primary-btn genesys-contact-show-popup"><img src="img/messenger.png"></button>
       </div>
     </div>
   </div>

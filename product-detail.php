@@ -178,7 +178,7 @@
   <section class="product">
     <div class="container">
       <div class="row">
-      <div id="slider" class="col-md-6 col-12 vertical-slider ga-vertical-gallery">
+      <div id="slider" class="col-md-4 col-12 vertical-slider ga-vertical-gallery">
           <section class="services-slider">
             <div class="main-container">
               <div class="slider slider-main">
@@ -200,7 +200,7 @@
             </div>
           </section>
         </div>
-        <div id="product"  class="offset-md-1 col-md-5 col-12">
+        <div id="product"  class="col-md-5 col-12">
           <input type="hidden" name="id" value="<?=$prod['id']?>">
           <h1><?=$prod['name']?></h1>
           <p id="price" class="product-price"><?=$prod['price']?></p>
@@ -268,6 +268,11 @@
           <p class="note-product-detail">
             <?=$prod['note']?>
           </p>
+        </div>
+        <div class="col-md-3 disclaimer">
+          <img src="img/voucher.jpg">
+          <p class="red-badge">Tổng đài hỗ trợ (8:00 - 17:00)</p>
+          <p>Hot line: <?=$web['hotline']?></p>
         </div>
       </div>
     </div>

@@ -77,7 +77,8 @@ if($rs = $dx->get_results($s)){
             <p>Cung cấp đồ dùng khách sạn chất lượng với giá cạnh tranh</p>
           </div>
           <div class="cart ">
-            <button >🧰</button>
+            <p class="cart-number">1</p>
+            <button ><img src="img/Icon-Thanh-vien-14.png"></button>
           </div>
           <!-- <div class="col box-search">
             <form action="/san-pham">
