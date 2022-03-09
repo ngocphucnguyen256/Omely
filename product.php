@@ -102,7 +102,7 @@ else {
           'id'	  => $r->catID,
           'name'  => stripslashes($r->Ten),
           'link'  => URL_Rewrite($r->URL),
-
+          'image' => ThumbImage($r->Anh,300),
         ];
 
         // Da ngon ngu
@@ -127,6 +127,7 @@ else {
         'id'	  => $rr->catID,
         'name'  => stripslashes($rr->Ten),
         'link'  => URL_Rewrite($rr->URL),
+        'image' => ThumbImage($r->Anh,300),
 
       ];
 
@@ -300,9 +301,14 @@ else {
             <?=$title?>
           </h4>
           <? if(count($catalog)>0) {?>
-          <ul class="sidebar-list">
+          <ul class="sidebar-list sidebar-list-flex">
             <? foreach($catalog as $c){?>
-              <li style="padding-left: 0;"><a href="<?=$c['link']?>"><?=$c['name']?></a></li>
+              <li style="padding-left: 0;">
+                <a href="<?=$c['link']?>">
+                  <img src="<?=$c['image']?>" alt="<?=$c['name']?>">
+                  <p><?=$c['name']?></p>
+                </a>
+              </li>
             <?}?>
           </ul>
           <? }else{?>

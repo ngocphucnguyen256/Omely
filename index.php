@@ -160,23 +160,15 @@
       //san pham hot cua tung danh muc v
       // Phan trang
 
-      $wh2 = '';//lw();
-
- 
-      // Danh muc san pham
-      if(!empty($_GET['ctl'])) $catID = safe($_GET['ctl']);
-      if(!empty($catID)) {
-        $wh2 .= ($wh2==''?'':'AND')."(Danhmuc LIKE '%#$catID#%')";
-      }
+    
 
 
 
-      $wh2 .= ($wh2==''?'':'AND')."(Active='1')";
-      $wh2 = ($wh2==''?'':'WHERE').$wh2;
-
-      $ps = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." $wh
-            ORDER BY Status, SKU ASC LIMIT 4";
-      //echo "SQL: $ps";
+  
+     
+      // $ps = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." WHERE Danhmuc LIKE'".preg_split("/[#,]/",$r->catID,-1,PREG_SPLIT_NO_EMPTY)[0]."' ".lw('AND')." AND Active='1'  ORDER  BY Status, SKU ASC LIMIT 4 ";
+      // $ps = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." WHERE Danhmuc LIKE'".$r->catID."' ".lw('AND')." AND Active='1'  ORDER  BY Status, SKU ASC LIMIT 4 ";
+      $ps = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." WHERE  Active='1'  ORDER  BY Status, SKU ASC LIMIT 4 ";
       $listProduct = [];
       if($ps = $dx->get_results($ps)){
         foreach($ps as $pr){
@@ -202,6 +194,7 @@
           }
 
           $listProduct[] = $infoProduct;
+  
         }
       }
       
@@ -258,17 +251,20 @@ foreach($list as $catalog){?>
           <?}?>
            </div>
           <?}else{?>
-            <h2>Danh mục đang cập nhật thêm sản phẩm</h2>
+            <h3 style="margin-bottom: 80px;">Danh mục đang cập nhật thêm sản phẩm</h3>
           <?}?>
             
       </div>
-      <?if(count($product)>0) {
+      <?if(count($catalog['listProduct'])>0){ 
   ?>
+
+
+
   <section class="genesys-product-hot">
     <div class="container">
       <h2><?=lg('Product Hot')?> <?=$catalog['name'] ?></h2>
       <div class="row">
-        <? foreach($catalog['listProduct'] as $a){?>
+        <?  foreach($catalog['listProduct'] as $a){?>
           <div class="col-md-3 col-6">
             <a href="<?=$a['link']?>">
               <div class="box-content-product ">
