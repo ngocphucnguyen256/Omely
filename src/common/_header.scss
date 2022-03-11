@@ -362,7 +362,7 @@ header {
         }
         img {
           margin-bottom: 0px;
-          height: 100px;
+          height: 45px;
           width: auto;
     
         }
@@ -405,6 +405,48 @@ header {
           width: 15px;
         }
       }
+      .cart-hidden {
+        width: 30%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background: #fff;
+        box-shadow: 0px 0px 5px #d4d4d4;
+        font-size: 16px;
+        transition: all .5s ease;
+       
+        #minicart {
+            padding: 1.3rem;
+        }
+        #minicart .button {
+            margin-top: 2rem;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .closecart {
+            font-size: 2rem;
+            position: absolute;
+            right: 10px;
+        }
+        .deletebtn {
+          display: block;
+          background: #E20000;
+          color: #fff;
+          width: 1.5rem;
+          height: 1.5rem;
+          text-align: center;
+          border-radius: 100%;
+          line-height: 1.5rem;
+          font-size: 0.8rem;
+          font-weight: bold;
+      }
+    }
 
     }
 
@@ -609,6 +651,6 @@ header {
 }
 
 
-
-
-
+.activo {
+  right: 0;
+}

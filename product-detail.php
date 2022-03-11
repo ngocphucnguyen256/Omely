@@ -261,7 +261,7 @@
               <div class="inc button-amount">+</div>
           </div>
           <div class="button-wrapper">
-             <button class="primary-btn" onclick="PlaceOrder()">Thêm vào giỏ hàng</button>
+             <button class="primary-btn" onclick="AddToCart(<?=$prod['sku']?>)">Thêm vào giỏ hàng</button>
              <button class="primary-btn" onclick="PlaceOrder()">Mua ngay</button>
              <button class="primary-btn" onclick="PlaceOrder()"><?=lg('Booking')?></button>
           </div>
@@ -551,10 +551,24 @@
     // Thong tin san pham
     let param = $opts.find(":input[value!='']").serialize();
     console.log('Product ',param);
-
     let url = "/request?" + param;
     location.href = url;
   }
+
+  myStorage = window.localStorage;
+
+  function AddToCart(ProID) {
+    // Thong tin san pham
+    let param = $opts.find(":input[value!='']")
+    console.log(ProID);
+    localStorage.setItem('cart', param);
+    console.log(localStorage.getItem('cart'));
+    
+    // let url = "/request?" + param;
+    // location.href = url;
+  }
+
+
 
   function ChangeLink(param) {
     /*
