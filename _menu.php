@@ -118,12 +118,13 @@ if(isset($_POST['btn-sunset-all-cart'])){
                     if(count($cart) > 0){
                       foreach($cart as $c =>$slr){  
                         ?>
-                        <tr>
+                        <tr class="product-item">
                             <td><img src="<?=$slr['icon']?>" width="100"></td>
                             <td><?=$slr['name']?></td>
                             <td><?=$slr['price']?></td>
                             <td><?=$slr['amount']?></td>
                             <form action="" method="post">  
+                              <input type="hidden" name="amount" value="<?=$slr['amount']?>"> 
                               <input type="hidden" name="id" value="<?=$slr['id']?>">     
                               <td> <button type="submit" name="btn-sunset-one-cart"class="deletebtn">X</button></td>
                             </form>
@@ -326,13 +327,8 @@ const closecartBtn = document.querySelector('.closecart');
 
 loadEventListeners()
 function loadEventListeners(){
-    //Menu right cart
-    bag.addEventListener('click', openCart);
-
-    //Close Cart button
+    bag.addEventListener('click', openCart)
     closecartBtn.addEventListener('click', closecart)
-
-
 }
 
 //Open cart
@@ -348,7 +344,15 @@ function closecart(e) {
 
 
 
-
+function PlaceOrder() {
+    let $opts = $('.product-item')
+    $price = $('#price');
+    // Thong tin san pham
+    let param = $opts.find(":input[value!='']").serialize();
+    console.log('Product ',param);
+    let url = "/request?" + param;
+    location.href = url;
+  }
 
 
 

@@ -1,20 +1,55 @@
 <?
-// Thong tin san pham
-if(!empty($_GET['id'])){
-  $id = safe($_GET['id']);
-  $s = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." WHERE proID='$id'";
-  $r = $dx->get_row($s);
-}
-if(empty($r->proID)) Page404();
 
-$prod = [
-  'id'    => $r->proID,
-  'name'  => stripslashes($r->Ten),
-  'image'	=> ThumbImage($r->Anh,1200),
-  'brief'	=> Html2Text($r->Tomtat,150),
-  'price' => lg('Contact'),
-  'promo' => 0
-];
+$listItem=[];
+if(!empty($_GET['id'])){
+  $query  = explode('&', $_SERVER['QUERY_STRING']);
+  $params = array();
+
+  foreach( $query as $param )
+  {
+  
+    if (strpos($param, '=') === false) $param += '=';
+
+    list($name, $value) = explode('=', $param, 2);
+    $params[urldecode($name)][] = urldecode($value);
+  }
+  $listItem=$params;
+  
+
+    
+}
+// echo '<pre>';print_r($listItem);echo '</pre>';
+
+if(count($listItem['id'])!=count($listItem['amount'])){
+  Page404();
+}
+
+$prodList=[];
+// Thong tin san pham
+if(count($listItem['id'])>0){
+       for($i=0;$i<count($listItem['id']);$i++){
+          $id=$listItem['id'][$i];
+          $s = "SELECT * FROM ".PREFIX_NAME."product".SUPFIX_NAME." WHERE proID='$id'";
+          $r = $dx->get_row($s);
+          $prodList []= [
+            'id'    => $r->proID,
+            'name'  => stripslashes($r->Ten),
+            'image'	=> ThumbImage($r->Anh,1200),
+            'brief'	=> Html2Text($r->Tomtat,150),
+            'price' => lg('Contact'),
+            'promo' => 0,
+            'amount' => $listItem['amount'][$i]
+          ];
+      }
+          
+       
+    
+}
+  
+
+
+
+
 
 // Image tag for SEO
 if($r->Anh!='') {
@@ -119,20 +154,23 @@ $prod['opts'] = $list;
   <section class="request-page">
     <div class="container compact">
       <h2>SẢN PHẨM BẠN QUAN TÂM</h2>
-      <div class="row box-request-product">
-        <div class="col-md-3 col-5"><img src="<?=$prod['image']?>" alt="<?=$prod['name']?>"></div>
-        <div class="col-md-9 col-7">
-          <h3><?=$prod['name']?></h3>
-          <div class="row">
-            <? foreach($prod['opts'] as $opt){?>
-            <div class="col-md-6"><?=$opt['name']?>: <?=$opt['value']?></div>
-            <? }?>
+      <?foreach ($prodList as $p){?>
+        <div class="row box-request-product">
+          <div class="col-md-3 col-5"><img src="<?=$p['image']?>" alt="<?=$p['name']?>"></div>
+          <div class="col-md-9 col-7">
+            <h3><?=$p['name']?></h3>
+            <div class="row">
+              <div class="col-md-6"><?=$p['name']?></div>
+              <div class="col-md-6">Số lượng: <?=$p['amount']?></div>
+            </div>
           </div>
         </div>
-      </div>
+      <?}
+
+      ?>
       <h2>Thông tin của bạn</h2>
       <form id="frmRequest" action="/lead" method="post">
-        <input type="hidden" name="data" value='<?=json_encode($prod)?>'>
+        <input type="hidden" name="data" value='<?=json_encode($prodList)?>'>
         <div class="row filed-input">
           <div class="col-md-2 col-12">
             <p>Họ và tên</p>
@@ -239,6 +277,10 @@ $prod['opts'] = $list;
     
     return false;
   }
+
+
+
+
   </script>
 </body>
 </html>
