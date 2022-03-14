@@ -255,36 +255,7 @@ foreach($list as $catalog){?>
           <?}?>
             
       </div>
-      <?if(count($catalog['listProduct'])>0){ 
-  ?>
 
-
-
-  <section class="genesys-product-hot">
-    <div class="container">
-      <h2><?=lg('Product Hot')?> <?=$catalog['name'] ?></h2>
-      <div class="row">
-        <?  foreach($catalog['listProduct'] as $a){?>
-          <div class="col-md-3 col-6">
-            <a href="<?=$a['link']?>">
-              <div class="box-content-product ">
-                <div class="box-img-product">
-                  <img src="<?=$a['thumb']?>" data-src="<?=$a['rias']?>" data-widths="[250,500,800,1000,1200]" data-optimumx="1.6" data-sizes="auto" class="lazyload" alt="<?=$a['name']?>">
-                </div>
-                <h3 style="font-weight: 500;"><?=$a['name']?></h3>
-                <p><? if($a['promo']!=0) {?>
-                  <?=$a['promo']?> <small style="text-decoration:line-through"><?=$a['price']?></small>
-                <? }else echo $a['price']?></p>
-                <!-- <span href="#!"><?=lg('SeeMore')?></span> -->
-              </div>
-            </a>
-          </div>
-        <?}?>
-      </div>
-    </div>
-  </section>
-  <?
-  }?>
     </section>
   <?
   }?>

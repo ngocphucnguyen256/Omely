@@ -18,6 +18,12 @@
     @include media-breakpoint-down(sm) {
       grid-template-columns: repeat(2,1fr);
     }
+    div{
+      padding: 20px;
+      img{
+        height:100%;
+      }
+    }
   }
   .genesys-product-hot{
     .container{
@@ -56,6 +62,7 @@
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
       left: 50%;
+      // top: 0;
     }
   }
   .box-content-banner {

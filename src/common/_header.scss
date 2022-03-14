@@ -344,25 +344,34 @@ header {
     .topbar {
       background-image: linear-gradient(to right, $third-color, #a87741);
       height: 50px;
+
+      .row{
+        align-items: center;
+        >div{
+          height: 50px;
+        }
+      }
       .gene-hotline {
         font-size: 14px;
         color: white;
         line-height: 25px;
-
-        span {
-          font-size: 18.5px;
+        display: flex;
+        align-items: center;
+        p{
+          margin-bottom: 0px;
         }
+     
+        
       }
       
       .logo-header {
-  
         text-align: center;
         .fix-pagespeed{ 
           width: 320px;
         }
         img {
           margin-bottom: 0px;
-          height: 45px;
+          height: 50px;
           width: auto;
     
         }
@@ -411,11 +420,12 @@ header {
         position: fixed;
         top: 0;
         right: -100%;
-        background: #fff;
-        box-shadow: 0px 0px 5px #d4d4d4;
+        background: $third-color;
+        box-shadow: 0px 0px 5px $third-color;
         font-size: 16px;
         transition: all .5s ease;
-       
+        z-index: 1000;
+        overflow: scroll;
         #minicart {
             padding: 1.3rem;
         }
@@ -447,6 +457,11 @@ header {
           font-weight: bold;
       }
     }
+    .activo {
+      right: 0 !important;
+      height:70% !important;
+    }
+    
 
     }
 
@@ -539,12 +554,12 @@ header {
               align-items: center;
               flex-wrap: wrap;
               justify-content: center;
-              padding: 0;
-              margin-bottom: 60px;
+              padding: 10px;
+              margin:  10px 0px;
               li {
-                height: 30px;
+              
                 line-height: 1.5;
-    
+          
               
                 a {
                   color: black;
@@ -552,6 +567,10 @@ header {
                   &:hover {
                     color: theme-color(primary);
                   }
+                }
+                img{
+                  width: 50px;
+                  margin-bottom: 10px;
                 }
               }
             }
@@ -651,6 +670,3 @@ header {
 }
 
 
-.activo {
-  right: 0;
-}

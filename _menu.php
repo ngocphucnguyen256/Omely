@@ -20,6 +20,7 @@ if($rs = $dx->get_results($s)){
               $mlv3[] = [
                 'link'	=> $rz->Link,
                 'name'	=> $rz->Ten,
+                'icon'	=> ThumbImage($rr->Icon,150),
               ];
             }
           }
@@ -64,6 +65,29 @@ if($rs = $dx->get_results($s)){
     echo $menu['sulg'];
   }
 }
+
+
+//cart
+
+//xoa mot
+if(isset($_POST['btn-sunset-one-cart'])){
+  $target = $_POST['id'];
+  foreach($_SESSION['listCart'] as $c => $v) {
+    if($v['id'] == $target){
+      unset($_SESSION['listCart'][$c]);
+    }
+     
+  }
+}
+
+//xoa het gio hang
+if(isset($_POST['btn-sunset-all-cart'])){
+   unset($_SESSION['listCart']);
+}
+
+
+
+
 ?>
 <header>
   <div class="box-menu--desktop d-sm-none d-md-block" style="height: 100px;">
@@ -76,20 +100,48 @@ if($rs = $dx->get_results($s)){
         <div class="quote">
             <p>Cung cấp đồ dùng khách sạn chất lượng với giá cạnh tranh</p>
           </div>
+          <div class="gene-hotline" style="text-align:right;">
+            <p> Hotline:  <span><?=$web['hotline']?></span></p>
+          </div>
           <div class="cart">
-            <p class="cart-number">1</p>
+            <p class="cart-number"><?=count($_SESSION['listCart'])?></p>
             <button ><img src="img/Icon-Thanh-vien-14.png"></button>
           </div>
           <div class="cart-hidden">
-             <a href="#" class="closecart"><i class="fas fa-times"></i></a>
-            <div id="minicart">                      
+             <a href="#" class="closecart">X</a>
+          
+            <div id="minicart">  
+                   
                 <table id="lista-carrito" class="u-full-width">
-                    <tbody></tbody>
+                    <tbody>
+                    <? $cart = $_SESSION['listCart'];
+                    if(count($cart) > 0){
+                      foreach($cart as $c =>$slr){  
+                        ?>
+                        <tr>
+                            <td><img src="<?=$slr['icon']?>" width="100"></td>
+                            <td><?=$slr['name']?></td>
+                            <td><?=$slr['price']?></td>
+                            <td><?=$slr['amount']?></td>
+                            <form action="" method="post">  
+                              <input type="hidden" name="id" value="<?=$slr['id']?>">     
+                              <td> <button type="submit" name="btn-sunset-one-cart"class="deletebtn">X</button></td>
+                            </form>
+                        </tr>
+                      <?}
+                    }?>            
+                    </tbody>
                 </table>
-                <a href="#" id="vaciar-carrito" class="button u-full-width">
-                    Clean Cart <i class="far fa-trash-alt"></i>
-                </a>
+                  <div style="display:flex; align-items:center;">
+                    <form action="" method="post" style="margin-right:20px;">
+                      <button style="margin-top:0px;" type="submit" name="btn-sunset-all-cart"id="vaciar-carrito" class="button primary-btn u-full-width">
+                          Xóa hết
+                      </button>
+                  </form>
+                  <button class="primary-btn" onclick="PlaceOrder()">Mua ngay</button>
+                  </div>
             </div>
+           
           </div>
           <!-- <div class="col box-search">
             <form action="/san-pham">
@@ -124,33 +176,33 @@ if($rs = $dx->get_results($s)){
                   <?
                   if(count($s['three'])==0){
                     ?>
-                  
                     <ul style="width: auto;">
-                      <li><a href="<?=$s['link']?>"><?=$s['name']?></a></li>
+                      <li>
+                        <a href="<?=$s['link']?>">
+                          <img src="<?=$s['icon']?>" alt="">
+                        <p><?=$s['name']?></p>
+                      </a>
+                    </li>
                     </ul>
-                
-
                   <?
                   }
                   else{
                   ?>
                   <dd>
-                      <h3><?=$s['name']?></h3>
+                      <h3 style="margin-top: 10px; margin-bottom: 10px;"><?=$s['name']?></h3>
                       <ul >
                         <? foreach($s['three'] as $e){?>
-                        <li><a href="<?=$e['link']?>"><?=$e['name']?></a></li>
+                          <li>
+                              <a href="<?=$e['link']?>">
+                                <img src="<?=$e['icon']?>" alt="<?=$e['name']?>">
+                                <p><?=$e['name']?></p>
+                            </a>
+                          </li>
                         <?}?>
                       </ul>
                   <?}?>
-                  
-                
                 </dd>
                 <?}?>
-                <!-- <dd class="col-md-6">
-                  <a href="<?=$m['link']?>">
-                    <img src="<?=$m['icon']?>" data-src="<?=$m['rias']?>" data-widths="[250,500,800,1000,1200]" data-optimumx="1.6" data-sizes="auto" class="lazyload">
-                  </a>
-                </dd> -->
               </dl>
             </div>
           </div>
@@ -180,9 +232,7 @@ if($rs = $dx->get_results($s)){
         }
       }
       ?>
-        <li class="gene-hotline" style="text-align:right;">
-          Hotline:  <span><?=$web['hotline']?></span>
-       </li>
+
       </ul>
     
     </div>
@@ -273,15 +323,6 @@ if($rs = $dx->get_results($s)){
 const bag =  document.querySelector('.cart');
 const cart =  document.querySelector('.cart-hidden');
 const closecartBtn = document.querySelector('.closecart');
-const contenedorCarrito =  document.querySelector('#lista-carrito tbody');
-const carrito = document.querySelector('#minicart');
-const vaciarCarritoBtn =  document.querySelector('#vaciar-carrito');
-
-
-//Body
-// const courseList = document.querySelector('.cards');
-// let articulosCarrito = [];
-// let total = 0;
 
 loadEventListeners()
 function loadEventListeners(){
@@ -291,24 +332,13 @@ function loadEventListeners(){
     //Close Cart button
     closecartBtn.addEventListener('click', closecart)
 
-    //Agregar curso presionando addToCart
-    // courseList.addEventListener('click', addCourse);
 
-    //Eliminar articulo
-    carrito.addEventListener('click', eliminarCurso);
-
-    //Vaciar carrito
-    vaciarCarritoBtn.addEventListener('click', ()=>{
-        articulosCarrito = []; // reseteamos carrito
-        limpiarHTML()
-    })
 }
 
 //Open cart
 function openCart(e){
     e.preventDefault();
     cart.classList.add('activo')
-    console.log("openCart")
 }
 //Close Cart
 function closecart(e) {
@@ -316,89 +346,14 @@ function closecart(e) {
     cart.classList.remove('activo')
 }
 
-//Btn add course
-function addCourse(e) {
-    e.preventDefault();
-    if (e.target.classList.contains('button')) {
-        const cursoSelected = e.target.parentElement;
-        datosCurso(cursoSelected)
-    }
-}
-
-//Delete product
-function eliminarCurso(e){
-    if(e.target.classList.contains('deletebtn')) {
-        const cursoID = e.target.getAttribute('data-id');
-        articulosCarrito = articulosCarrito.filter( curso => curso.id !== cursoID);
-
-        carritoHTML();
-    }
-}
-
-//Read course data
-function datosCurso(curso){
-
-    //Create Object
-    const infoCurso = {
-        image: curso.querySelector('img').src,
-        title: curso.querySelector('.title').textContent,
-        price: curso.querySelector('.price').textContent,
-        id: curso.querySelector('a').getAttribute('data-id'),
-        cantidad: 1
-    }
-
-    //Revisa si un elemento existe
-    const existe = articulosCarrito.some( curso => curso.id === infoCurso.id);
-    if(existe){
-        //Actualizar el carrito
-        let cursos = articulosCarrito.map(curso =>{
-            if(curso.id === infoCurso.id){
-                curso.cantidad++;
-                return curso;
-            }else {
-                return curso;
-            }
-        });
-        articulosCarrito = [...cursos];
-    }else{
-        //Agrega elementos al array carrito
-        articulosCarrito = [...articulosCarrito, infoCurso];
-    }
-    //console.log(articulosCarrito);
-    carritoHTML();
-}
 
 
-//Muestra carrito en el HTML
-function carritoHTML() {    
-    //Limpiar HTML
-    limpiarHTML();
-    articulosCarrito.forEach( curso =>{
-        
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td><img src="${curso.image}" width="100"></td>
-            <td>${curso.title}</td>
-            <td>${curso.price}</td>
-            <td>${curso.cantidad}</td>
-            <td><a href="#" class="deletebtn" data-id="${curso.id}">X</a></td>
-        `;
-        //Agregar en el Tbody
-        contenedorCarrito.appendChild(row);
 
-        //Total
-        total = curso.cantidad + curso.cantidad
-        console.log(total);
-    })
-    
-}
 
-function limpiarHTML(){
-    // contenedorCarrito.innerHTML = '';
 
-    while(contenedorCarrito.firstChild){
-        contenedorCarrito.removeChild(contenedorCarrito.firstChild)
-    }
-}
+
+
+
+
 </script>
 

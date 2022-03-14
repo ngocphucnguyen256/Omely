@@ -173,10 +173,29 @@
 
 
     $prod['color'] = $list;
+
+    if(isset($_POST['btn-add-cart'])){
+
+
+        $listCart = [
+          'id'    => $_POST['id'],
+          'name'  => $_POST['name'],
+          'amount' => $_POST['amount'],
+          'icon' => $_POST['icon'],
+          'price' => $_POST['price'],          
+        ];
+
+        
+      $_SESSION['listCart'][] =  $listCart ;
+  
+      echo "<script>window.location.href='/san-pham/$pageURL';</script>";
+    }
+
+    // echo '<pre>'.print_r($_SESSION['listCart']).'</pre>';
   }
   ?>
   <section class="product">
-    <div class="container">
+    <div data-id="<?=$prod['id']?>" class="container .prod-item ">
       <div class="row">
       <div id="slider" class="col-md-4 col-12 vertical-slider ga-vertical-gallery">
           <section class="services-slider">
@@ -201,7 +220,13 @@
           </section>
         </div>
         <div id="product"  class="col-md-5 col-12">
+          <form method="post" action="" id="">
           <input type="hidden" name="id" value="<?=$prod['id']?>">
+          <input type="hidden" name="name" value="<?=$prod['name']?>">
+          <input type="hidden" name="icon" value="<?=$prod['slider'][0]['thumb']?>">          
+          <input type="hidden" name="price" value="<?=$prod['price']?>">  
+       
+                  
           <h1><?=$prod['name']?></h1>
           <p id="price" class="product-price"><?=$prod['price']?></p>
           <!-- <p class="product-price"><?=lg('Contact')?></p> -->
@@ -220,6 +245,7 @@
             if(count($prod['color'])>0){?>
             <div class="col-6" style="display: none;"><?=lg('colorKL')?></div>
             <div class="col-6" style="display: none;">
+            <input type="hidden" name="o[<?=$prod['color']?>"></input>
               <div id="pcolor">
                 <? foreach($prod['color'] as $clr){?>
                 <p data-id="<?=$clr['id']?>" class="product-color <?=$clr['mark']?'active':''?>" title="<?=$clr['name']?>" style="background:<?=$clr['color']?>">
@@ -257,17 +283,22 @@
           <div class="product-amount">
             <label for="name">Số lưọng</label>
                <div class="dec button-amount">-</div>
-              <input type="text" name="product-amount" id="product-amount" value="1">
-              <div class="inc button-amount">+</div>
+              <input type="text" name="amount" id="product-amount" value="1">
+              <div class="inc  button-amount">+</div>
           </div>
           <div class="button-wrapper">
-             <button class="primary-btn" onclick="AddToCart(<?=$prod['sku']?>)">Thêm vào giỏ hàng</button>
+             <button name="btn-add-cart" type="submit" class="primary-btn button-add" >Thêm vào giỏ hàng</button>
              <button class="primary-btn" onclick="PlaceOrder()">Mua ngay</button>
-             <button class="primary-btn" onclick="PlaceOrder()"><?=lg('Booking')?></button>
+             <!-- <button class="primary-btn" onclick="PlaceOrder()"><?=lg('Booking')?></button> -->
+            </form>
           </div>
           <p class="note-product-detail">
             <?=$prod['note']?>
           </p>
+        
+        
+        
+          
         </div>
         <div class="col-md-3 disclaimer">
           <img src="img/voucher.jpg">
@@ -557,16 +588,16 @@
 
   myStorage = window.localStorage;
 
-  function AddToCart(ProID) {
-    // Thong tin san pham
-    let param = $opts.find(":input[value!='']")
-    console.log(ProID);
-    localStorage.setItem('cart', param);
-    console.log(localStorage.getItem('cart'));
+  // function AddToCart(ProID) {
+  //   // Thong tin san pham
+  //   let param = $opts.find(":input[value!='']")
+  //   console.log(ProID);
+  //   localStorage.setItem('cart', param);
+  //   console.log(localStorage.getItem('cart'));
     
-    // let url = "/request?" + param;
-    // location.href = url;
-  }
+  //   // let url = "/request?" + param;
+  //   // location.href = url;
+  // }
 
 
 
