@@ -577,6 +577,16 @@
   <script>
 
 
+    let $opts = $('#product'),
+        $price = $('#price');
+
+    function PlaceOrder() {
+      // Thong tin san pham
+      let param = $opts.find(":input[value!='']").serialize();
+      console.log('Product ',param);
+      let url = "/request?" + param;
+      location.href = url;
+  }
   myStorage = window.localStorage;
 
   // function AddToCart(ProID) {

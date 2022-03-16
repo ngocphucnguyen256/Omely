@@ -196,7 +196,7 @@
   });
   
   function MakeContact(id){
-    var frm = $('#'+id),
+    var frm = $('#'+id);
         ok = true, err = '';
 
     if (frm.find('*[name=name]').val() == "") {

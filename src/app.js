@@ -29,6 +29,9 @@ import './general.js';
 // Floatbar, menu
 import './floatbar.js';
 
+
+import './cart.js';
+
 // Modal
 import './popup.js';
 

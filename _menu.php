@@ -89,6 +89,10 @@ if(isset($_POST['btn-sunset-all-cart'])){
 
 
 ?>
+
+
+
+
 <header>
   <div class="box-menu--desktop d-sm-none d-md-block" style="height: 100px;">
     <section class="topbar">
@@ -105,7 +109,7 @@ if(isset($_POST['btn-sunset-all-cart'])){
           </div>
           <div class="cart">
             <p class="cart-number"><?=count($_SESSION['listCart'])?></p>
-            <button ><img src="img/Icon-Thanh-vien-14.png"></button>
+            <button  ><img src="img/Icon-Thanh-vien-14.png"></button>
           </div>
           <div class="cart-hidden">
              <a href="#" class="closecart">X</a>
@@ -318,46 +322,4 @@ if(isset($_POST['btn-sunset-all-cart'])){
     </div>
   </nav>
 </header>
-
-
-<script>
-const bag =  document.querySelector('.cart');
-const cart =  document.querySelector('.cart-hidden');
-const closecartBtn = document.querySelector('.closecart');
-
-loadEventListeners()
-function loadEventListeners(){
-    bag.addEventListener('click', openCart)
-    closecartBtn.addEventListener('click', closecart)
-}
-
-//Open cart
-function openCart(e){
-    e.preventDefault();
-    cart.classList.add('activo')
-}
-//Close Cart
-function closecart(e) {
-    e.preventDefault();
-    cart.classList.remove('activo')
-}
-
-
-
-function PlaceOrder() {
-    let $opts = $('.product-item')
-    $price = $('#price');
-    // Thong tin san pham
-    let param = $opts.find(":input[value!='']").serialize();
-    console.log('Product ',param);
-    let url = "/request?" + param;
-    location.href = url;
-  }
-
-
-
-
-
-
-</script>
 
